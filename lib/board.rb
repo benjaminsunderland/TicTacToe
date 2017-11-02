@@ -3,6 +3,16 @@ class Board
   attr_accessor :grid
 
   def initialize
-    @grid = Array.new( 3, Array.new(3, 0) )
+    @grid = [[nil,nil,nil],
+             [nil,nil,nil],
+             [nil,nil,nil]]
   end
+
+  def printb
+   @grid.each do |row|
+     print "|"
+     row.each { |cell| print "#{cell}|" }
+     puts "\n-------"
+   end
+ end
 end

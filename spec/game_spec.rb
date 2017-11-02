@@ -2,6 +2,20 @@ require 'game'
 
 describe Game do
 
-  subject(:board) {described_class.new}
+  subject(:game) {described_class.new(board)}
+  let(:board) {double :board, grid: [[nil,nil,nil],[nil,nil,nil],[nil,nil,nil]]}
 
+
+
+
+  describe "When a game is started" do
+    it "it is initialized with a board" do
+      expect(game.board).to eq(board)
+    end
+
+    it "is able for a player to make a move" do
+      game.player_make_move(0, 1, "x")
+      expect(game.board.grid[0][1]).to eq("x")
+    end
+  end
 end
