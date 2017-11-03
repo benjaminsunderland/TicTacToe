@@ -33,7 +33,7 @@ describe Game do
       game.player_make_move(0, 0, "x")
       game.player_make_move(0, 1, "x")
       game.player_make_move(0, 2, "x")
-      pending
+      expect(game.horizontal_winner?).to eq(true)
     end
 
     it "is possible for a player to fill a row vertically" do

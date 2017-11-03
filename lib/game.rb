@@ -31,7 +31,15 @@ class Game
     end
   end
 
-  def horizontal_winner
+  def horizontal_winner?
+    @board.grid.each do |x| x.detect do |e|
+       if x.count(e) >= 3
+         return true
+        else
+         return false
+        end
+      end
+    end
   end
 
   def vertical_winner
