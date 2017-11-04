@@ -1,4 +1,5 @@
 class Board
+
   attr_accessor :grid, :turn
 
   WINNING_COMBINATIONS = [[0, 1, 2], [3, 4, 5],
@@ -8,31 +9,19 @@ class Board
 
 
   def initialize
-    @grid = [[nil, nil, nil],
-             [nil, nil, nil],
-             [nil, nil, nil]]
+    @grid = Array.new(3) { Array.new(3) { nil } }
     @turn = 0
   end
 
-  def display_board(board)
-    puts " #{board[0]} | #{board[1]} | #{board[2]} "
-    puts '-----------'
-    puts " #{board[3]} | #{board[4]} | #{board[5]} "
-    puts '-----------'
-    puts " #{board[6]} | #{board[7]} | #{board[8]} "
-  end
-
-
   def player_make_move(row, col, player)
-    # fail "The game is over!" if win?
-    raise "You can't do that!" if off_board?(row, col)
+    raise "You can't do that!" if off_board?(row, col) || position_taken?(row, col)
     @grid[row][col] = player
     next_turn
   end
 
 
   def off_board?(row, col)
-    return true if (row < 0 || row > 2) || (col < 0 || col > 2)
+    (row < 0 || row > 2) || (col < 0 || col > 2)
   end
 
   def next_turn
@@ -40,12 +29,9 @@ class Board
   end
 
   def position_taken?(row, col)
-    if @grid[row][col].nil?
-      false
-    else
-      true
-    end
+    (@grid[row][col].nil?) ? (return false) : (return true)
   end
+
 
   def current_turn
     @turn.even? ? (return 'X') : (return 'O')
@@ -65,9 +51,5 @@ class Board
        end
     end
     false
-  end
-
-  def game_over
-    "The game is over!"
   end
 end

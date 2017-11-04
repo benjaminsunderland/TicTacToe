@@ -27,12 +27,8 @@ class Game
     @board.next_turn
   end
 
-  def winner
-    @board.three_in_a_row?
-    @board.game_over
+  def winner?
+    @board.three_in_a_row? ? true : false
   end
-
-
-
 
 end
