@@ -36,20 +36,20 @@ class Board
   def current_turn
     @turn.even? ? (return 'X') : (return 'O')
   end
-
+  
   def three_in_a_row?
 
-    flat_board = @grid.flatten
-    x_matches = flat_board.each_index.select { |i| flat_board[i] == 'X' }
-    o_matches = flat_board.each_index.select { |i| flat_board[i] == 'O' }
+     flat_board = @grid.flatten
+     x_matches = flat_board.each_index.select { |i| flat_board[i] == 'X' }
+     o_matches = flat_board.each_index.select { |i| flat_board[i] == 'O' }
 
-    WINNING_COMBINATIONS.each do |line|
-      if (line - x_matches).empty?
-        return true
-      elsif (line - o_matches).empty?
-        return true
-       end
-    end
-    false
-  end
+     WINNING_COMBINATIONS.each do |line|
+       if (line - x_matches).empty?
+         return true
+       elsif (line - o_matches).empty?
+         return true
+        end
+     end
+     false
+   end
 end
