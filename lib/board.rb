@@ -36,7 +36,7 @@ class Board
   def current_turn
     @turn.even? ? (return 'X') : (return 'O')
   end
-  
+
   def three_in_a_row?
 
      flat_board = @grid.flatten

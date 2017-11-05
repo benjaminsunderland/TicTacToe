@@ -27,15 +27,15 @@ describe Game do
       allow(board).to receive(:position_taken?).and_return(false)
       allow(board).to receive(:off_board?).and_return(false)
       allow(board).to receive(:player_make_move).with(1, 1, "X")
-      allow(board).to receive(:next_turn).and_return(1)
-      game.place_marker(1, 1, "X")
+      allow(board).to receive(:turn).and_return(0)
+      game.place_marker(1, 1)
     end
   end
 
   describe "At the end of a game" do
     it "is possible to win" do
       allow(board).to receive(:three_in_a_row?).and_return(true)
-      expect(game.winner?).to eq(true)
+      expect(game.winner).to eq("You Won")
     end
   end
 end
